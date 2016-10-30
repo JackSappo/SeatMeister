@@ -4,6 +4,8 @@ const util = require('./util/util.js');
 let sessionId = process.argv[2];
 let names = util.uniques(process.argv.slice(3));
 
+
+//Calculate how large each group should be
 function getGroupCounts(session, names) {
   let groupCounts = [];
   let namesLen = names.length;
@@ -43,6 +45,8 @@ function getGroupCounts(session, names) {
   return groupCounts;
 }
 
+
+//Fill groups with provided names
 function assignSeats(session, names, groupCounts) {
   let namesCopy = names.slice();
 
@@ -96,6 +100,8 @@ function assignSeats(session, names, groupCounts) {
   });
 }
 
+
+//Combine above functions to create group
 function createGroup(session, ...names) {
   names = names[0];
   let groupCounts = getGroupCounts(session, names);
@@ -108,7 +114,9 @@ function createGroup(session, ...names) {
   return assignSeats(session, names, groupCounts);
 }
 
-let db = fs.readFile('./sessions/' + sessionId + '.txt', (err, sessionInfo) => {
+
+//Invoke functions
+fs.readFile('./sessions/' + sessionId + '.txt', (err, sessionInfo) => {
   names = names.map(name => name.toLowerCase());
   if (names.length === 0) throw new Error('No names entered.')
   if (err) throw err;
