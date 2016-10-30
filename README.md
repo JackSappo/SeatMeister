@@ -12,17 +12,17 @@ Node.js
 All input takes place via the command line. To set up, simply download the app and navigate to its root directory.  
 No additional modules are required.
 ### Creating a session
-`./lunchgrouper.sh _sessionId minGroupSize maxGroupSize_`
-- sessionId: Any string of 8 or fewer characters. Represents a unique session ID which tracks which users set next to each other.
-- minGroupSize: Any integer. Represents the minimum amount of attendees that may be assigned to a group
-- maxGroupSize: Any integer. Represents the maximum amount of attendees that may be assigned to a group
+`./lunchgrouper.sh sessionId minGroupSize maxGroupSize`
+- **sessionId**: Any string of 8 or fewer characters. Represents a unique session ID which tracks which users set next to each other.
+- **minGroupSize**: Any integer. Represents the minimum amount of attendees that may be assigned to a group
+- **maxGroupSize**: Any integer. Represents the maximum amount of attendees that may be assigned to a group  
 ### Demo mode
-`./lunchgrouper.sh _demo_`
-Creates a session with ID "demo", already populated with 9 names.
+`./lunchgrouper.sh demo`
+Creates a session with ID "demo", already populated with 9 names.  
 ### Grouping attendees
-`./lunchgrouper.sh _sessionId {names}_`
-- sessionId: Must match a previously created session ID.
-- {names}: Any amount of space-delimited names.
+`./lunchgrouper.sh sessionId {names}`
+- **sessionId**: Must match a previously created session ID.
+- **{names}**: Any amount of space-delimited names.
 
 ## Approach
 - Attendees' seating histories with one another are tracked via a graph.
