@@ -1,0 +1,7 @@
+  # Sessions
+*.txt
+
+  # Junk
+~old/
+~docs/
+~debugging/
