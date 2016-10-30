@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 //Create graph
-const Graph = require('./graphConstructor.js');
+const Graph = require('./util/graphConstructor.js');
 let groupHistory = new Graph();
 
 groupHistory.sessionId = 'demo';

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 create_session() {
-  node createSession_v3.js $@
+  node createSession.js $@
 }
 
 group() {
@@ -30,6 +30,6 @@ case "$1" in
     echo $(demo ${@:2})
     ;;
   *)
-    echo $"Usage: $0 {create_session|group|set_default}"
+    echo $"Usage: $0 {create_session|group|demo}"
     exit 1
   esac

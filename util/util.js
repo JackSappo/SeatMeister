@@ -3,7 +3,7 @@ const Graph = require('./graphConstructor.js');
 exports.initialCap = function (str) {
   if (!str || typeof str !== 'string') return;
   return str[0].toUpperCase() + str.slice(1);
-}
+};
 
 exports.parseSession = function(sessionInfo) {
   let newSession = new Graph();
@@ -14,7 +14,7 @@ exports.parseSession = function(sessionInfo) {
   newSession._nodes =  sessionInfo._nodes || {};
 
   return newSession;
-}
+};
 
 exports.displayResults = function(groups) {
   console.log('\n');
@@ -24,4 +24,9 @@ exports.displayResults = function(groups) {
       console.log(exports.initialCap(name));
     });
   });
-}
+};
+
+exports.uniques = function(names) {
+  names = new Set(names);
+  return [...names]
+};

@@ -1,8 +1,8 @@
 const fs = require('fs');
-const util = require('./util.js');
+const util = require('./util/util.js');
 
 let sessionId = process.argv[2];
-let names = process.argv.slice(3);
+let names = util.uniques(process.argv.slice(3));
 
 function getGroupCounts(session, names) {
   let groupCounts = [];
@@ -20,17 +20,15 @@ function getGroupCounts(session, names) {
   // Adjusts finalVal if < minGroup
   if (finalVal < session.minGroupSize) {
     for (let idx = groupCounts.length - 2; idx >= 0; idx--) {
-      let diff = groupCounts[idx] - session.minGroupSize;
-      if (groupCounts[idx] - diff >= session.minGroupSize && //Current number can afford to decrease
-          diff + finalVal >= session.minGroupSize) { //Increase would be enough
-        let subtract = session.minGroupSize - finalVal;
-        groupCounts[idx] -= subtract;
-        finalVal += subtract;
+      let needed = session.minGroupSize - finalVal;
+      let available = groupCounts[idx] - session.minGroupSize;
+      if (available >= needed) {
+        groupCounts[idx] -= needed;
+        finalVal += needed;
         break;
-      } else { //Adjust value if possible and move on
-        let subtract = groupCounts[idx] - session.minGroupSize;
-        groupCounts[idx] -= subtract;
-        finalVal += subtract;
+      } else {
+        groupCounts[idx] -= available;
+        finalVal += available;
       }
     }
   }
@@ -102,7 +100,8 @@ function createGroup(session, ...names) {
   names = names[0];
   let groupCounts = getGroupCounts(session, names);
   if (!groupCounts) {
-    let errorText = 'Solution not possible.';
+    let errorText = 'Solution not possible. Cannot fit ' + names.length +
+      ' names into groups of size ' + session.minGroupSize + '-' + session.maxGroupSize + '.';
     console.log(errorText);
     return errorText;
   }
