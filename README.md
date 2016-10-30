@@ -13,17 +13,20 @@ All input takes place via the command line. To set up, simply download the app a
 No additional modules are required.
 
 ### Creating a session
-`./lunchgrouper.sh create_session sessionId minGroupSize maxGroupSize`
+`./lunchgrouper.sh create_session (sessionId) (minGroupSize) (maxGroupSize)`  
+ex. ./lunchgrouper.sh create_session abcd 2 3  
 - **sessionId**: Any string of 8 or fewer characters. Represents a unique session ID which tracks which users set next to each other.
 - **minGroupSize**: Any integer. Represents the minimum amount of attendees that may be assigned to a group.
 - **maxGroupSize**: Any integer. Represents the maximum amount of attendees that may be assigned to a group.
 
 ### Demo mode
-`./lunchgrouper.sh demo`
+`./lunchgrouper.sh demo`  
+ex. ./lunchgrouper.sh demo  
 Creates a session with ID "demo", already populated with 9 names.  
 
 ### Grouping attendees
-`./lunchgrouper.sh group sessionId {names}`
+`./lunchgrouper.sh group (sessionId) (...names)`  
+ex. ./lunchgrouper.sh group abcd Allen Billy Jimmy Donny Sandra  
 - **sessionId**: Must match a previously created session ID.
 - **{names}**: Any amount of space-delimited names.
 
