@@ -5,7 +5,7 @@ A simple utility to help organize table groupings, ensuring that employees who s
 Organizing seating for large events can be maddening. Let SeatMeister do the organizing for you!
 
 ## Tech Stack
-Node.js
+Just good ol' fashioned Node.js
 
 ## Usage
 ### Setup
@@ -15,8 +15,8 @@ No additional modules are required.
 ### Creating a session
 `./lunchgrouper.sh sessionId minGroupSize maxGroupSize`
 - **sessionId**: Any string of 8 or fewer characters. Represents a unique session ID which tracks which users set next to each other.
-- **minGroupSize**: Any integer. Represents the minimum amount of attendees that may be assigned to a group
-- **maxGroupSize**: Any integer. Represents the maximum amount of attendees that may be assigned to a group  
+- **minGroupSize**: Any integer. Represents the minimum amount of attendees that may be assigned to a group.
+- **maxGroupSize**: Any integer. Represents the maximum amount of attendees that may be assigned to a group.
 
 ### Demo mode
 `./lunchgrouper.sh demo`
@@ -35,6 +35,7 @@ Creates a session with ID "demo", already populated with 9 names.
 
 ## Roadmap
 - Add a UI! This implementation was solely to show off Node.js, but if this app were to be realistically used it would need a UI.
+- Implement improved graph persistence using Neo4j.
 - Ability to modify a session's minimum & maximum group size after creating it. Easy fix, not included per instruction.
 - Improved handling for impossible seating combinations.
 - More interesting group constraints. Mixing genders, ensuring new attendees aren't all assigned to one table, etc.
