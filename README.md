@@ -19,17 +19,17 @@ ex: ./lunchgrouper.sh create_session abcd 2 3
 - **minGroupSize**: Any integer. Represents the minimum amount of attendees that may be assigned to a group.
 - **maxGroupSize**: Any integer. Represents the maximum amount of attendees that may be assigned to a group.
 
-### Demo mode
-`./lunchgrouper.sh demo`  
-ex: ./lunchgrouper.sh demo  
-  
-Creates a session with ID "demo", already populated with 9 names.  
-
 ### Grouping attendees
 `./lunchgrouper.sh group (sessionId) (...names)`  
 ex: ./lunchgrouper.sh group abcd Allen Billy Jimmy Donny Sandra  
 - **sessionId**: Must match a previously created session ID.
 - **{names}**: Any amount of space-delimited names.
+
+### Demo mode
+`./lunchgrouper.sh demo`  
+ex: ./lunchgrouper.sh demo  
+
+Creates a session with ID "demo", already populated with 9 names.  
 
 ## Approach
 - Attendees' seating histories with one another are tracked via a graph.
